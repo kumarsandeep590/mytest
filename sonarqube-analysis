@@ -1,0 +1,13 @@
+node{
+   stage('SCM Checkout'){
+     git 'https://github.com/kumarsandeep590/my-app/'
+   }
+   stage('Compile-Package'){
+      sh 'mvn package'
+   }
+   
+   stage('SonarQube Analysis') {
+          withSonarQubeEnv('sonar') { 
+          sh "mvn sonar:sonar"
+        }
+    }
