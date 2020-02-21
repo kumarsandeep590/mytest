@@ -1,0 +1,15 @@
+node{
+   stage('SCM Checkout'){
+     git 'https://github.com/kumarsandeep590/mytest/'
+   }
+   stage('Compile-Package'){
+      // Get maven home path
+      sh 'mvn package'
+   }
+   stage('Deploy to Tomcat'){
+      
+      sshagent(['tomcat-dev']) {
+         sh 'scp -o StrictHostKeyChecking=no target/*.war root@13.234.38.142:/opt/tomcat/latest/webapps'
+      }
+   }
+}
