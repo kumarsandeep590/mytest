@@ -1,7 +1,7 @@
 node {
    
    stage('SCM Checkout'){
-    // Clone repo
+    // Clone repo from Github
         git branch: 'master',
         credentialsId: 'github',
         url: 'https://github.com/kumarsandeep590/mytest'
