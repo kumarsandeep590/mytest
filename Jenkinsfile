@@ -8,7 +8,7 @@ node {
         }
    
    stage('Complie-Package'){
-      //Get maven home path
+      //Get maven home path OK
       //def mvnHome = tool name: 'maven', type: 'maven'
       sh 'mvn package'
     }
